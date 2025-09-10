@@ -1,5 +1,5 @@
 package br.edu.iff.dominio;
 
-public class ObjetoDominioImpl {
+public abstract class ObjetoDominioImpl {
 
 }
