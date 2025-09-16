@@ -152,7 +152,7 @@ public class Rodada extends ObjetoDominioImpl{
 		//O jogador só pode tentar ou arriscar, se a rodada não encerrou. 
 		//Ao final de tentar ou arriscar, se encerrou, atualizar os pontos do Jogador.
 		
-		if(this.encerrou()==0) {
+		if(this.encerrou()) {
 			throw new RuntimeException("Impossível tentar. Rodada já encerrou.");
 		}
 		if(this.getNumPalavras()==0) {
@@ -217,21 +217,49 @@ public class Rodada extends ObjetoDominioImpl{
 	}
 	
 	public Letra[] getTentativas() {
-		
+	    Letra[] certas = this.getCertas();
+	    Letra[] erradas = this.getErradas();
+	    Letra[] tentativas = new Letra[certas.length + erradas.length];
+	    
+	    //src: array de origem 
+	    //srcPos: posição inicial no array de origem (normalmente 0 para copiar desde o início)
+	    //dest: array de destino
+	    //destPos: posição inicial no array de destino (normalmente 0 para colar desde o início)
+	    //length
+	    System.arraycopy(certas, 0, tentativas, 0, certas.length);
+	    System.arraycopy(erradas, 0, tentativas, certas.length, erradas.length);
+	    
+	    return tentativas;
 	}
 	
-	public Letra[] getCertas() {
-		
-	}
+    public Letra[] getCertas() {
+        ArrayList<Letra> acertos = new ArrayList<Letra>();
+        for(Item item : this.itens){
+            for(Letra letra : item.getLetrasDescobertas()){
+            	//garante que nao tenham letras repetidas
+                if(!acertos.contains(letra)){
+                    acertos.add(letra);
+                }
+            }
+        }
+        return acertos.toArray(new Letra[acertos.size()]);
+    }
 	
 	public Letra[] getErradas() {
         return this.erradas.toArray(new Letra[this.erradas.size()]);
 	}
 	
 	public int calcularPontos() {
-		
-	}
-	
+        if(!this.descobriu()){
+        	return 0;
+        }
+        int pontosTotaisPorLetrasEncobertas = 0;
+        for (Item item : this.itens) {
+            pontosTotaisPorLetrasEncobertas += item.calcularPontosLetrasEncobertas(pontosPorLetraEncoberta);
+        }
+        return pontosQuandoDescobreTodasAsPalavras + pontosTotaisPorLetrasEncobertas;
+	}      		
+        
 	public boolean encerrou() {
         return this.arriscou() || this.descobriu() || this.getQtdeTentativasRestantes() == 0;
 	}
