@@ -13,7 +13,7 @@ import br.edu.iff.repository.RepositoryException;
 public class MemoriaRodadaRepository implements RodadaRepository {
 
     private static MemoriaRodadaRepository soleInstance;
-    private Map<Long, Rodada> pool;
+    private Map<Long, Rodada> pool; //talvez um vetor?
     private long idCounter;
 
     public static MemoriaRodadaRepository getSoleInstance(){
