@@ -1,5 +1,9 @@
 package br.edu.iff.bancodepalavras.dominio.tema;
 
-public class TemaFactory {
+import br.edu.iff.bancodepalavras.dominio.tema.Tema;
+
+public interface TemaFactory {
+  
+public Tema getTema(String nome);
 
 }
