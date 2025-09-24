@@ -1,5 +1,6 @@
 package br.edu.iff.jogoforca.dominio.jogador;
 
-public class JogadorFactory {
+public interface JogadorFactory {
 
+    Jogador getJogador(String nome);
 }
