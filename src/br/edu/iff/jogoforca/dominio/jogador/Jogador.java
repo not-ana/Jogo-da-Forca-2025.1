@@ -17,6 +17,7 @@ public class Jogador extends ObjetoDominioImpl {
 
 		return new Jogador(id, nome, pontuacao);
 	}
+<<<<<<< HEAD
 
 	private Jogador(long id, String nome) {
 
@@ -48,3 +49,5 @@ public class Jogador extends ObjetoDominioImpl {
 		this.pontuacao = pontuacao;
 	}
 }
+=======
+>>>>>>> refs/remotes/origin/Tema
