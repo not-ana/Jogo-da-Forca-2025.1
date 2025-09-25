@@ -1,26 +1,24 @@
 package br.edu.iff.dominio;
+
 import java.util.Objects;
 
-<<<<<<< HEAD
-public abstract class ObjetoDominioImpl {
-=======
-public abstract class ObjetoDominioImpl implements ObjetoDominio{
-	
-	//adicionar 'final' evita da classe ter 'id' modificado
-	private final long id;
-	
-	public ObjetoDominioImpl(long id) {
-		super();
-		this.id = id;
-	}
-	
-    //nao tem setId porque 'id' nao deve ser alterado
+public abstract class ObjetoDominioImpl implements ObjetoDominio {
+
+    //o final aqui é pra evitar override do valor do id pra quem herdar
+    private final long id;
+
+    public ObjetoDominioImpl(long id) {
+        super();
+        this.id = id;
+    }
+
+    //nao tem setId porque Id nao deve ser alterado
     @Override
     public long getId() {
         return id;
     }
-    
-    
+
+
     // equals() e hashCode() com final para evitar override das subclasses
     //value object!!!
     @Override
@@ -30,10 +28,10 @@ public abstract class ObjetoDominioImpl implements ObjetoDominio{
         ObjetoDominioImpl that = (ObjetoDominioImpl) o;
         return id == that.id;
     }
->>>>>>> refs/remotes/origin/Rodada
 
     @Override
     public final int hashCode() {
         return Objects.hash(id);
     }
+
 }

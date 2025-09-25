@@ -1,12 +1,8 @@
 package br.edu.iff.bancodepalavras.dominio.palavra;
 
-<<<<<<< HEAD
-public interface PalavraRepository {
-=======
 import br.edu.iff.bancodepalavras.dominio.tema.Tema;
 import br.edu.iff.repository.Repository;
 import br.edu.iff.repository.RepositoryException;
->>>>>>> refs/remotes/origin/Palavra
 
 public interface PalavraRepository extends Repository{
 

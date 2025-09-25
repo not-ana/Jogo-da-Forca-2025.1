@@ -1,52 +1,18 @@
 package br.edu.iff.jogoforca.dominio.jogador;
 
-<<<<<<< HEAD
-public interface JogadorRepository {
-=======
-import br.edu.iff.factory.EntityFactory;
+import br.edu.iff.repository.Repository;
+import br.edu.iff.repository.RepositoryException;
 
+public interface JogadorRepository extends Repository {
 
-public class JogadorFactoryImpl extends EntityFactory implements JogadorFactory {
+    Jogador getPorId(long id);
 
-    private static JogadorFactoryImpl soleInstance;
+    Jogador getPorNome(String nome);
 
+    void inserir(Jogador jogador) throws RepositoryException;
 
-    public static void createSoleInstance(JogadorRepository repository) {
+    void atualizar(Jogador jogador) throws RepositoryException;
 
-        if (soleInstance == null) {
-
-            soleInstance = new JogadorFactoryImpl(repository);
-
-        }
-    }
-
-    public static JogadorFactoryImpl getSoleInstance(){
-
-        if(soleInstance != null) {
-
-            return soleInstance;
-        } else {
-
-            throw new IllegalStateException("A fábrica de jogador não foi definida.");
-        }
-
-    }
-
-    private JogadorFactoryImpl(JogadorRepository jogadorRepository) {
-        super(jogadorRepository);
-
-    }
-
-    private JogadorRepository getJogadorRepository() {
-
-        return (JogadorRepository) getRepository();
-    }
-
-    public Jogador getJogador(String nome) {
-
-        return Jogador.criar(getJogadorRepository().getProximoId(), nome);
-    }
-
->>>>>>> refs/remotes/origin/Jogador
+    void remover(Jogador jogador) throws RepositoryException;
 
 }

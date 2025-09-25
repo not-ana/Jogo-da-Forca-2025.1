@@ -1,14 +1,12 @@
 package br.edu.iff.bancodepalavras.dominio.tema;
 
-<<<<<<< HEAD
-public interface TemaRepository {
-=======
 import br.edu.iff.repository.Repository;
 import br.edu.iff.repository.RepositoryException;
 
 public interface TemaRepository extends Repository {
 
-  Tema getPorId(long id);
+
+     Tema getPorId(long id);
 
      Tema[] getPorNome(String nome);
 
@@ -19,7 +17,4 @@ public interface TemaRepository extends Repository {
      void atualizar(Tema tema) throws RepositoryException;
 
      void remover(Tema tema) throws RepositoryException;
-
->>>>>>> refs/remotes/origin/Tema
-
 }

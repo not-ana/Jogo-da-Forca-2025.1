@@ -1,20 +1,18 @@
 package br.edu.iff.jogoforca.dominio.rodada;
 
-<<<<<<< HEAD
-public interface RodadaRepository {
-=======
 import br.edu.iff.jogoforca.dominio.jogador.Jogador;
 import br.edu.iff.repository.Repository;
 import br.edu.iff.repository.RepositoryException;
->>>>>>> refs/remotes/origin/Rodada
 
-public interface RodadaRepository extends Repository{
-	
-	public Rodada getPorId(long id);
-	public Rodada[] getPorJogador(Jogador jogador);
-	
+public interface RodadaRepository extends Repository {
 
-	public void inserir(Rodada rodada) throws RepositoryException;
-    public void atualizar(Rodada rodada) throws RepositoryException;
-    public void remover(Rodada rodada) throws RepositoryException;	
+    Rodada getPorId (long id);
+
+    Rodada[] getPorJogador(Jogador jogador);
+
+    void inserir(Rodada rodada) throws RepositoryException;
+
+    void atualizar(Rodada rodada) throws RepositoryException;
+
+    void remover(Rodada rodada) throws RepositoryException;
 }
