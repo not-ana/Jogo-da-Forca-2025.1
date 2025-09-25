@@ -1,0 +1,5 @@
+comidas: pizza, lasanha, sushi, hamburguer, sopa, churrasco
+tecnologias: computador, celular, internet, robo, satelite, drone
+bebidas: cafe, cha, suco, refrigerante, vinho, cerveja
+meios_de_comunicacao: jornal, radio, televisao, revista, carta, podcast
+objetos_da_casa: cadeira, mesa, sofa, cama, geladeira, espelho
