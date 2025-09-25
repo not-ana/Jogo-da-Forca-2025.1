@@ -39,4 +39,9 @@ public class BDRRodadaRepository implements RodadaRepository {
     @Override
     public void remover(Rodada rodada) throws RepositoryException {
     }
+    
+    @Override
+    public long getProximoId() {
+        return 0;
+    }
 }

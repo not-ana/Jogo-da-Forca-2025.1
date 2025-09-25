@@ -31,12 +31,12 @@ public class Main {
 
         adicionarTemasEPalavrasDeArquivo("src/br/edu/iff/jogo.txt", temaRepository, temaFactory, palavraAppService);
 
-        System.out.print("Deseja iniciar a partida? (s/n): ");
+        System.out.print("Iniciar a partida? (s/n): ");
         String iniciarPartida = scanner.nextLine().trim().toLowerCase();
 
         if (iniciarPartida.equals("s")) {
 
-            System.out.print("Digite seu nome: ");
+            System.out.print("Digite o seu nome: ");
             String nomeJogador = scanner.nextLine();
 
             Jogador jogador = aplicacao.getJogadorFactory().getJogador(nomeJogador);
@@ -54,7 +54,7 @@ public class Main {
 
         } else {
 
-            System.out.println("Encerrando o jogo. Até a próxima!");
+            System.out.println("Encerrando o jogo.");
         }
     }
 
@@ -65,11 +65,11 @@ public class Main {
 
         Rodada rodada = rodadaAppService.novaRodada(jogador);
 
-        System.out.println("\n Tema das palavras: " + rodada.getTema().getNome());
+        System.out.println("Tema: " + rodada.getTema().getNome());
 
         do {
             System.out.println("\nTentativas restantes: " + rodada.getQtdeTentativasRestantes());
-            System.out.println("Tentativas de letras anteriores: ");
+            System.out.println("Tentativas anteriores: ");
 
             for (Letra letraTentativa : rodada.getTentativas()) {
                 
@@ -77,9 +77,8 @@ public class Main {
                 System.out.print(" | ");
             }
 
-            System.out.println("\n\n---------Palavras---------\n"); 
+            System.out.println("\n\n---Palavras---\n"); 
             rodada.exibirItens(null);
-            System.out.println("--------------------------");
 
             System.out.println("\nCorpo: ");
             rodada.exibirBoneco(null);
@@ -87,13 +86,13 @@ public class Main {
 
             System.out.println("(1) Tentar letra");
             System.out.println("(2) Arriscar");
-            System.out.print("Escolha uma opção: ");
+            System.out.print("Digite uma letra: ");
 
             String escolha = scanner.next();
 
             switch (escolha) {
                 case "1":
-                    System.out.print("\n Digite a letra: ");
+                    System.out.print("\n\n Digite a letra: ");
                     rodada.tentar(scanner.next().charAt(0));
                     break;
                 case "2":
@@ -111,7 +110,7 @@ public class Main {
             }
 
             if (rodada.descobriu()) {
-                System.out.println("\n----Parabéns! Você descobriu!----");
+                System.out.println("\n----Você conseguiu!!!----");
                 System.out.println("Pontuação: " + rodada.calcularPontos());
                 break;
             }
@@ -119,7 +118,7 @@ public class Main {
         } while (!rodada.encerrou());
 
         if (!rodada.descobriu()) {
-            System.out.println("\n----Que pena! Você não conseguiu descobrir as palavras----");
+            System.out.println("\n----ERROU!----");
         }
     }
 
