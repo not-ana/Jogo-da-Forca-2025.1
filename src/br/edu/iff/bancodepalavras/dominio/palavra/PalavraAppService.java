@@ -11,8 +11,7 @@ public class PalavraAppService {
     private TemaRepository temaRepository;
 
 
-    private PalavraAppService(TemaRepository temaRepository, PalavraRepository palavraRepository, PalavraFactory factory) {
-        
+    private PalavraAppService(TemaRepository temaRepository, PalavraRepository palavraRepository, PalavraFactory factory) {   
         this.palavraFactory = factory;
         this.palavraRepository = palavraRepository;
         this.temaRepository = temaRepository;
@@ -27,33 +26,24 @@ public class PalavraAppService {
     public static PalavraAppService getSoleInstance() {
 
         if(soleInstance == null) {
-
             throw new IllegalStateException("A instância de PalavraAppService não foi criada ainda.");
         }
-
         return soleInstance;
     }
 
-    public boolean novaPalavra(String palavra, Long idTema) {
-        
+    public boolean novaPalavra(String palavra, Long idTema) {    
         if(temaRepository.getPorId(idTema) == null) {
-
             throw new RuntimeException("Tema não existe no repositório.");
         }
-
         if(palavraRepository.getPalavra(palavra) != null) {
-
             return true;
         }
 
-        try {
-            
-            palavraRepository.inserir(palavraFactory.criarPalavra(palavra, temaRepository.getPorId(idTema)));
-           
+        try {          
+            palavraRepository.inserir(palavraFactory.criarPalavra(palavra, temaRepository.getPorId(idTema)));          
             return true;
 
-        } catch (RepositoryException e) {
-            
+        } catch (RepositoryException e) {            
             System.err.println(e.getMessage() + "Erro ao inserir palavra no Repositório.");
 
             return false;

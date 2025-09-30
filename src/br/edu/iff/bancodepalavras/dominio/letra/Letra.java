@@ -8,10 +8,6 @@ public abstract class Letra {
     }
 
     private void setCodigo(char codigo) {
-
-        /**
-         * Verificação para byte nulo e espaço em branco da tabela ASCII
-         */
         if (codigo == 0 || codigo == 32) {
             throw new IllegalArgumentException("O caractere não pode ser nulo nem vazio.");
         }

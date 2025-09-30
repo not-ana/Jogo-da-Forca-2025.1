@@ -20,7 +20,6 @@ public class BDRRepositoryFactory implements RepositoryFactory {
 		}
 		return soleInstance;
 	}
-
 	private BDRRepositoryFactory() {
 
 	}

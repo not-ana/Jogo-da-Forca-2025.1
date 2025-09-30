@@ -31,10 +31,10 @@ public class Main {
 
         adicionarTemasEPalavrasDeArquivo("src/br/edu/iff/jogo.txt", temaRepository, temaFactory, palavraAppService);
 
-        System.out.print("Iniciar a partida? (s/n): ");
+        System.out.print("Iniciar a partida? (sim/nao): ");
         String iniciarPartida = scanner.nextLine().trim().toLowerCase();
 
-        if (iniciarPartida.equals("s")) {
+        if (iniciarPartida.equals("sim")) {
 
             System.out.print("Digite o seu nome: ");
             String nomeJogador = scanner.nextLine();
@@ -108,9 +108,8 @@ public class Main {
                     System.out.println("\n Opção inválida!");
                     break;
             }
-
             if (rodada.descobriu()) {
-                System.out.println("\n----Você conseguiu!!!----");
+                System.out.println("\n----Você conseguiu " + rodada.getJogador().getNome() + "!!!----");
                 System.out.println("Pontuação: " + rodada.calcularPontos());
                 break;
             }
@@ -118,8 +117,9 @@ public class Main {
         } while (!rodada.encerrou());
 
         if (!rodada.descobriu()) {
-            System.out.println("\n----ERROU!----");
+            System.out.println("\n----Você errou " + rodada.getJogador().getNome() + "----");
         }
+           
     }
 
     private static void adicionarTemasEPalavrasDeArquivo(String arquivo, TemaRepository temaRepository, TemaFactory temaFactory, PalavraAppService palavraAppService) {

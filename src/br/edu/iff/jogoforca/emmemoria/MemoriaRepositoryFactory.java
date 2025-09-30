@@ -18,12 +18,10 @@ public class MemoriaRepositoryFactory implements RepositoryFactory {
 		if (soleInstance == null) {
 			soleInstance = new MemoriaRepositoryFactory();
 		}
-
 		return soleInstance;
 	}
 
 	private MemoriaRepositoryFactory() {
-
 	}
 
 	@Override
@@ -43,7 +41,6 @@ public class MemoriaRepositoryFactory implements RepositoryFactory {
 
 	@Override
 	public JogadorRepository getJogadorRepository() {
-
 		return MemoriaJogadorRepository.getSoleInstance();
 	}
 

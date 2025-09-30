@@ -57,14 +57,14 @@ public class Rodada extends ObjetoDominioImpl {
         Rodada.pontosPorLetraEncoberta = pontosPorLetraEncoberta;
     }
 
-    public static void setBonecoFactory(BonecoFactory bonecoFactory){
-        Rodada.bonecoFactory = bonecoFactory;
-    }
-
     public static BonecoFactory getBonecoFactory(){
         return bonecoFactory;
     }
-
+    
+    public static void setBonecoFactory(BonecoFactory bonecoFactory){
+        Rodada.bonecoFactory = bonecoFactory;
+    }
+    
     public static Rodada criar(long id, Palavra[] palavras, Jogador jogador){
         if(bonecoFactory==null){
             throw new RuntimeException("Precisa inicializar o BonecoFactory antes da rodada");
@@ -92,13 +92,12 @@ public class Rodada extends ObjetoDominioImpl {
         Tema temaTeste = this.itens[0].getPalavra().getTema();
         for(Item item : this.itens){
             if(item.getPalavra().getTema() != temaTeste){
-                //rapaz, se isso aqui acontecer... é pq ta pegando temas diferentes. mas todas as palavras TÊM que ser do mesmo tema
                 throw new RuntimeException("Todas as palavras da rodada devem ser do mesmo tema");
             }
         }
-        this.jogador = jogador; //seta o jogador
-        this.erradas = new ArrayList<Letra>(); //inicializa a lista de letras erradas
-        this.boneco = bonecoFactory.getBoneco(); //pega um boneco da fábrica
+        this.jogador = jogador; 
+        this.erradas = new ArrayList<Letra>();
+        this.boneco = bonecoFactory.getBoneco();
     }
 
     private Rodada(long id, Item[] itens, Letra[] erradas, Jogador jogador){
@@ -129,7 +128,6 @@ public class Rodada extends ObjetoDominioImpl {
             throw new RuntimeException("Deve ter pelo menos um item(palavra) na rodada");
         }
         return this.itens[0].getPalavra().getTema();
-        //pra acessar tema, da rodada, precisa acessar o item, que acessa a palavra, que acessa o tema
     }
 
     public Palavra[] getPalavras() {
@@ -138,7 +136,6 @@ public class Rodada extends ObjetoDominioImpl {
             palavras[i] = this.itens[i].getPalavra();
         }
         return palavras;
-        //pra acessar palavras, da rodada, precisa acessar o item, que acessa a palavra
     }
 
 
@@ -259,7 +256,6 @@ public class Rodada extends ObjetoDominioImpl {
     }
 
     public boolean arriscou() {
-        //arriscou da rodada chama o arriscou de cada item. a.k.a arriscou (uma palavra) de cada 'item'
         for(Item item : this.itens){
             if(!item.arriscou()){
                 return false;
